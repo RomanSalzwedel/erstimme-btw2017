@@ -35,11 +35,13 @@ districts02_17$ost_2013[districts02_17$bula_2013 > 10] <- 1
 kandidatinnen_90_17 <- kandidatinnen_90_17_master[, c(2:57, 76)]
 
 
-# Dropping name columns (because they aren't needed for analysis)
-kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:3, 6, 9, 12, 15, 18, 21, 30:48, 51:57)]
+# Reordering name columns to the very right (because they aren't needed for analysis)
+kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:3, 6, 9, 12, 15, 18, 21, 30:48, 51:57, 4, 7, 10, 13, 16, 19, 5, 8, 11, 14, 17, 20, 22:27)]
+
+
 
 # Dropping ungueltige Stimmen
-kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:12,15:35)]
+kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:12,15:53)]
 
 
 
@@ -47,19 +49,19 @@ kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:12,15:35)]
 # Adding districts information from other data (especially corresponding 2017 Wahlkreis for each obs)
 # Adding Wahlkreisnamen for 2017 obs
 wkr_names_17 <- districts02_17[, 3:4]
-wkr_names_17$year<- 2017
+wkr_names_17$year <- 2017
 colnames(wkr_names_17) <- c("wkr_nummer", "wkr_name", "year")
 kandidatinnen_90_17 <- merge(kandidatinnen_90_17, wkr_names_17, by.x = c("year", "wkr_nummer"), by.y = c("year", "wkr_nummer"), all.x = TRUE)
 
 kandidatinnen_90_17$wkr_name.x[kandidatinnen_90_17$year == 2017] <- kandidatinnen_90_17$wkr_name.y[kandidatinnen_90_17$year == 2017]
-kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:33]
+kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:51]
 colnames(kandidatinnen_90_17)[10] <- "wkr_name"
 
 # Adding wkr_change, wkr_new, and wkr_ost for 2017
 wkr_info_17 <- districts02_17[, c(3, 8:10)]
 wkr_info_17$year <- 2017
 kandidatinnen_90_17 <- merge(kandidatinnen_90_17, wkr_info_17, by.x = c("year", "wkr_nummer"), by.y = c("year", "wkr_nr2017"), all.x = TRUE)
-colnames(kandidatinnen_90_17)[34:36] <- c("wkr_change", "wkr_new", "bula_ost")
+colnames(kandidatinnen_90_17)[52:54] <- c("wkr_change", "wkr_new", "bula_ost")
 
 # Adding wkr_nr17, wkr_change, wkr_new, and wkr_ost for 2013
 wkr_info_13 <- districts02_17[, c(2, 3, 15, 16, 113)]
@@ -68,10 +70,10 @@ kandidatinnen_90_17 <- merge(kandidatinnen_90_17, wkr_info_13, by.x = c("year", 
 kandidatinnen_90_17$bula_ost[kandidatinnen_90_17$year == 2013] <- kandidatinnen_90_17$ost_2013[kandidatinnen_90_17$year == 2013]
 kandidatinnen_90_17$wkr_change[kandidatinnen_90_17$year == 2013] <- kandidatinnen_90_17$change2013[kandidatinnen_90_17$year == 2013]
 kandidatinnen_90_17$wkr_new[kandidatinnen_90_17$year == 2013] <- kandidatinnen_90_17$new2013[kandidatinnen_90_17$year == 2013]
-kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:37]
+kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:55]
 
 # Setting wkr_nr17 to wkr_nummer for 2017
-kandidatinnen_90_17$wkr_nr2017[kandidatinnen_90_17$year == 2017] <- kandidatinnen_90_17$wkr_nummer
+kandidatinnen_90_17$wkr_nr2017[kandidatinnen_90_17$year == 2017] <- kandidatinnen_90_17$wkr_nummer[kandidatinnen_90_17$year == 2017]
 
 
 
@@ -84,11 +86,9 @@ kandidatinnen_90_17$bula_ost[kandidatinnen_90_17$year == 2009] <- kandidatinnen_
 kandidatinnen_90_17$wkr_change[kandidatinnen_90_17$year == 2009] <- kandidatinnen_90_17$change2009[kandidatinnen_90_17$year == 2009]
 kandidatinnen_90_17$wkr_new[kandidatinnen_90_17$year == 2009] <- kandidatinnen_90_17$new2009[kandidatinnen_90_17$year == 2009]
 kandidatinnen_90_17$wkr_nr2017.x[kandidatinnen_90_17$year == 2009] <- kandidatinnen_90_17$wkr_nr2017.y[kandidatinnen_90_17$year == 2009]
-kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:37]
-colnames(kandidatinnen_90_17)[37] <- "wkr_nr2017"
+kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:55]
+colnames(kandidatinnen_90_17)[55] <- "wkr_nr2017"
 
-
-##### IN PROGRESS FROM HERE
 
 
 # Adding wkr_nr17, wkr_change, wkr_new, and wkr_ost for 2005
@@ -99,8 +99,8 @@ kandidatinnen_90_17$bula_ost[kandidatinnen_90_17$year == 2005] <- kandidatinnen_
 kandidatinnen_90_17$wkr_change[kandidatinnen_90_17$year == 2005] <- kandidatinnen_90_17$change2005[kandidatinnen_90_17$year == 2005]
 kandidatinnen_90_17$wkr_new[kandidatinnen_90_17$year == 2005] <- kandidatinnen_90_17$new2005[kandidatinnen_90_17$year == 2005]
 kandidatinnen_90_17$wkr_nr2017.x[kandidatinnen_90_17$year == 2005] <- kandidatinnen_90_17$wkr_nr2017.y[kandidatinnen_90_17$year == 2005]
-kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:37]
-colnames(kandidatinnen_90_17)[37] <- "wkr_nr2017"
+kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:55]
+colnames(kandidatinnen_90_17)[55] <- "wkr_nr2017"
 
 
 
@@ -112,12 +112,12 @@ kandidatinnen_90_17$bula_ost[kandidatinnen_90_17$year == 2002] <- kandidatinnen_
 kandidatinnen_90_17$wkr_change[kandidatinnen_90_17$year == 2002] <- kandidatinnen_90_17$change2002[kandidatinnen_90_17$year == 2002]
 kandidatinnen_90_17$wkr_new[kandidatinnen_90_17$year == 2002] <- kandidatinnen_90_17$new2002[kandidatinnen_90_17$year == 2002]
 kandidatinnen_90_17$wkr_nr2017.x[kandidatinnen_90_17$year == 2002] <- kandidatinnen_90_17$wkr_nr2017.y[kandidatinnen_90_17$year == 2002]
-kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:37]
-colnames(kandidatinnen_90_17)[37] <- "wkr_nr2017"
+kandidatinnen_90_17 <- kandidatinnen_90_17[, 1:55]
+colnames(kandidatinnen_90_17)[55] <- "wkr_nr2017"
 
 
 ###
-kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:32, 34:37)]
+kandidatinnen_90_17 <- kandidatinnen_90_17[, c(1:32, 34:55)]
 
 
 
@@ -284,18 +284,20 @@ for (i in 1:2491) {
 }
 
 
-# RESHAPE wide to long, 6 parties, 4 variables by party: _platz, _zweit, _erst, _inc
+# RESHAPE wide to long, 6 parties, 4 variables by party: _platz, _zweit, _erst, _inc, _vname
 
 # 1 CDU, 2 CSU, 3 SPD, 4, GRU, 5 PDS, 6 FDP
 
 kandidatinnen_90_17_wide <- kandidatinnen_90_17
-colnames(kandidatinnen_90_17_wide)
+colnames(kandidatinnen_90_17)
 
 colnames(kandidatinnen_90_17_wide) <-c(
 "year"     ,    "wkr_nummer"  , "bula"      ,   "k_platz.1" , "k_platz.2" , "k_platz.3" , "k_platz.4" ,"k_platz.5"  ,"k_platz.6" ,
 "wkr_name"  ,   "wbr"      ,    "wlr"     ,     "glt_erst" ,    "glt_zweit"   , "erst.1"  ,   "zweit.1"  ,  "erst.3"  ,   "zweit.3"  , 
 "erst.6" ,    "zweit.6" ,   "erst.5"  ,   "zweit.5"  ,  "erst.4"   ,  "zweit.4"  ,  "erst.2"   ,  "zweit.2"  ,  "k_inc.1"  , 
-"k_inc.2"   , "k_inc.3" ,   "k_inc.6"  ,  "k_inc.4"  ,  "k_inc.5",    "wkr_change"  , "wkr_new"  ,    "bula_ost"   ,  "wkr_nr2017" , 
+"k_inc.2"   , "k_inc.3" ,   "k_inc.6"  ,  "k_inc.4"  ,  "k_inc.5",  "k_vname.1" , "k_vname.2" , "k_vname.3" , "k_vname.4" ,
+"k_vname.5" , "k_vname.6" , "k_nname.1" , "k_nname.2" , "k_nname.3" , "k_nname.4",  "k_nname.5" , "k_nname.6",  "k_idname.1",
+"k_idname.2" ,"k_idname.3" ,"k_idname.4" ,"k_idname.5" ,"k_idname.6",  "wkr_change"  , "wkr_new"  ,    "bula_ost"   ,  "wkr_nr2017" , 
 "k_winner.1" ,"k_winner.2", "k_winner.3" ,"k_winner.4", "k_winner.5" ,"k_winner.6")
 
 kandidatinnen_90_17_wide$party.1 <- "CDU"
@@ -306,7 +308,7 @@ kandidatinnen_90_17_wide$party.5 <- "PDS"
 kandidatinnen_90_17_wide$party.6 <- "FDP"
 
 # Reordering data
-kandidatinnen_90_17_wide <- kandidatinnen_90_17_wide[, c(1:14, 15, 25, 17, 23, 21, 19, 16, 26, 18, 24, 22, 20, 27, 28, 29, 31, 32, 30, 33:48)]
+kandidatinnen_90_17_wide <- kandidatinnen_90_17_wide[, c(1:14, 15, 25, 17, 23, 21, 19, 16, 26, 18, 24, 22, 20, 27, 28, 29, 31, 32, 30, 33:66)]
 
 
 kandidatinnen_90_17_long <- reshape(kandidatinnen_90_17_wide, varying = names(kandidatinnen_90_17_wide)[grep(".*\\..*", names(kandidatinnen_90_17_wide), value = FALSE)], direction = "long", sep = ".")
@@ -324,7 +326,7 @@ write.csv2(kandidatinnen_90_17_long, file="kandidatinnen_90_17_long.csv", quote=
 
 
 
-
+View(kandidatinnen_90_17_long)
 
 
 
