@@ -1,7 +1,7 @@
 ### Making a file to track Wahlkreis changes for 2017
 ### Final goal: Create file for 2002-2017 Wahlkreise and changes for use in models
 
-# setwd("")
+# setwd("/Users/cornelius/Desktop/erststimme2017.de/R")
 
 library(R2HTML)
 library(rgdal)
@@ -88,3 +88,6 @@ districts02_17 <- merge(wkr2017, districts02_13,by="wkr_nr2013")
 #View(districts02_17)
 
 write.csv2(districts02_17, file="districts02_17.csv", sep=";", quote=FALSE) 
+
+districts02_17 <- read.csv2("districts02_17.csv", sep = ";", stringsAsFactors = FALSE)
+View(districts02_17)
