@@ -316,14 +316,143 @@ kandidatinnen_90_17_long <- reshape(kandidatinnen_90_17_wide, varying = names(ka
 # Setting all zweit == 0 to NA (assuming that mostly this is CSU in other Bundeslaender)
 kandidatinnen_90_17_long$zweit[kandidatinnen_90_17_long$zweit == 0] <- NA
 
-write.csv2(kandidatinnen_90_17_long, file="kandidatinnen_90_17_long.csv", quote=FALSE) 
+# Correcting candidate incumbency (since the existing variables seem flawed)
+# 2013
+
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "merkel_angela" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "lietz_matthias" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "rehberg_eckhardt" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "kruse_ruediger" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "brandt_helmut" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "braun_helge" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "brand_michael" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "schroeder_kristina" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "bleser_peter" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "hasselfeldt_gerda" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "brandl_reinhard" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "hahn_florian" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "kahrs_johannes" & kandidatinnen_90_17_long$year == 2013] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "bockhahn_steffen" & kandidatinnen_90_17_long$year == 2013] <- 1
+
+# 2009
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "landgraf_katharina" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "michalk_maria" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "kretschmer_michael" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "braehmig_klaus" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "vaatz_arnold" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "bellmann_veronika" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "wanderwitz_marco" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "baumann_guenter" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "luther_michael" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "hochbaum_robert" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "schockenhoff_andreas" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "bareiss_thomas" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "hiller-ohm_gabriele" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "wetzel_margrit" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "stuenker_joachim" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "griefahn_monika" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "wolff_waltraud" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "steppuhn_andreas" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "wistuba_engelbert" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "huebner_klaas" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "reichel_maik" & kandidatinnen_90_17_long$year == 2009] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "schmidt_silvia" & kandidatinnen_90_17_long$year == 2009] <- 1
+
+# 2005
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "merkel_petra-evelyne" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "deittert_hubert" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "waechter_gerhard" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "haibach_holger-heinrich" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "grund_manfred" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "kranz_ernst" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "schneider_carsten" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "baetzing_sabine" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "mayer_stephan" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "obermeier_franz" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "aigner_ilse" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "ramsauer_peter" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "oswald_eduard" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "raidel_hans" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "binninger_clemens" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "hennrich_michael" & kandidatinnen_90_17_long$year == 2005] <- 1
+kandidatinnen_90_17_long$k_inc[kandidatinnen_90_17_long$k_idname == "gienger_eberhard" & kandidatinnen_90_17_long$year == 2005] <- 1
 
 
 
-# Making party incumbency columns
-# todo
+
+# Party incumbency
+
+# 2005
+remove(wkr_17, winner_02, party_05)
+kandidatinnen_90_17_long$party_inc <- NA
+for (i in unique(kandidatinnen_90_17_long$k_idname[kandidatinnen_90_17_long$year==2005])){
+  # Checkin for NAs in used data
+  if(!is.na(i)) {
+    wkr_17 <- subset(kandidatinnen_90_17_long$wkr_nr2017, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2005) & !is.na(kandidatinnen_90_17_long$wkr_nr2017))
+    party_05 <- subset(kandidatinnen_90_17_long$party, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2005) & !is.na(kandidatinnen_90_17_long$party))
+    if(length(wkr_17) > 1) wkr_17 <- wkr_17[1]
+    if(length(party_05) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_05 & kandidatinnen_90_17_long$year == 2005 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- 0
+    winner_02 <-   subset(kandidatinnen_90_17_long$k_winner, (kandidatinnen_90_17_long$party == party_05) & (kandidatinnen_90_17_long$year == 2002) & (kandidatinnen_90_17_long$wkr_nr2017 == wkr_17))
+    if(length(winner_02) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_05 & kandidatinnen_90_17_long$year == 2005 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- winner_02
+    remove(wkr_17, winner_02, party_05)
+  }
+}
+remove(wkr_17, winner_02, party_05)
 
 
+# 2009
+remove(wkr_17, winner_05, party_09)
+for (i in unique(kandidatinnen_90_17_long$k_idname[kandidatinnen_90_17_long$year==2009])){
+  # Checkin for NAs in used data
+  if(!is.na(i)) {
+    wkr_17 <- subset(kandidatinnen_90_17_long$wkr_nr2017, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2009) & !is.na(kandidatinnen_90_17_long$wkr_nr2017))
+    party_09 <- subset(kandidatinnen_90_17_long$party, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2009) & !is.na(kandidatinnen_90_17_long$party))
+    if(length(wkr_17) > 1) wkr_17 <- wkr_17[1]
+    if(length(party_09) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_09 & kandidatinnen_90_17_long$year == 2009 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- 0
+    winner_05 <-   subset(kandidatinnen_90_17_long$k_winner, (kandidatinnen_90_17_long$party == party_09) & (kandidatinnen_90_17_long$year == 2005) & (kandidatinnen_90_17_long$wkr_nr2017 == wkr_17))
+    if(length(winner_05) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_09 & kandidatinnen_90_17_long$year == 2009 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- winner_05
+    remove(wkr_17, winner_05, party_09)
+  }
+}
+remove(wkr_17, winner_05, party_09)
+
+# 2013
+remove(wkr_17, winner_09, party_13)
+for (i in unique(kandidatinnen_90_17_long$k_idname[kandidatinnen_90_17_long$year==2013])){
+  # Checkin for NAs in used data
+  if(!is.na(i)) {
+    wkr_17 <- subset(kandidatinnen_90_17_long$wkr_nr2017, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2013) & !is.na(kandidatinnen_90_17_long$wkr_nr2017))
+    party_13 <- subset(kandidatinnen_90_17_long$party, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2013) & !is.na(kandidatinnen_90_17_long$party))
+    if(length(wkr_17) > 1) wkr_17 <- wkr_17[1]
+    if(length(party_13) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_13 & kandidatinnen_90_17_long$year == 2013 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- 0
+    winner_09 <-   subset(kandidatinnen_90_17_long$k_winner, (kandidatinnen_90_17_long$party == party_13) & (kandidatinnen_90_17_long$year == 2009) & (kandidatinnen_90_17_long$wkr_nr2017 == wkr_17))
+    if(length(winner_09) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_13 & kandidatinnen_90_17_long$year == 2013 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- winner_09
+    remove(wkr_17, winner_09, party_13)
+  }
+}
+remove(wkr_17, winner_09, party_13)
+
+
+# 2017
+remove(wkr_17, winner_13, party_17)
+for (i in unique(kandidatinnen_90_17_long$k_idname[kandidatinnen_90_17_long$year==2017])){
+  # Checkin for NAs in used data
+  if(!is.na(i)) {
+    wkr_17 <- subset(kandidatinnen_90_17_long$wkr_nr2017, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2017) & !is.na(kandidatinnen_90_17_long$wkr_nr2017))
+    party_17 <- subset(kandidatinnen_90_17_long$party, (kandidatinnen_90_17_long$k_idname == i) & (kandidatinnen_90_17_long$year == 2017) & !is.na(kandidatinnen_90_17_long$party))
+    if(length(wkr_17) > 1) wkr_17 <- wkr_17[1]
+    if(length(party_17) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_17 & kandidatinnen_90_17_long$year == 2017 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- 0
+    winner_13 <-   subset(kandidatinnen_90_17_long$k_winner, (kandidatinnen_90_17_long$party == party_17) & (kandidatinnen_90_17_long$year == 2013) & (kandidatinnen_90_17_long$wkr_nr2017 == wkr_17))
+    if(length(winner_13) != 0) kandidatinnen_90_17_long$party_inc[kandidatinnen_90_17_long$party == party_17 & kandidatinnen_90_17_long$year == 2017 & kandidatinnen_90_17_long$wkr_nr2017 == wkr_17] <- winner_13
+    remove(wkr_17, winner_13, party_17)
+  }
+}
+remove(wkr_17, winner_13, party_17)
+
+
+
+
+#write.csv2(kandidatinnen_90_17_long, file="kandidatinnen_90_17_long.csv", quote=FALSE) 
 
 
 View(kandidatinnen_90_17_long)
